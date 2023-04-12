@@ -1,24 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import Player from './Components/Player';
 
 function App() {
+  const starterPlayers = [
+    {
+      id: 'p1',
+      name: 'Trae Young',
+      position: 'Point Guard',
+      stats: '26 3 10',
+      image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1629027.png'
+    }
+  ]
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+      <h1 className='title'>Hawks Depth Chart</h1>
+      <Player players = {starterPlayers} />
+      </div>
   );
 }
 
