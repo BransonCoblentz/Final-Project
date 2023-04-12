@@ -1,5 +1,6 @@
 import './App.css';
 import Player from './Components/Player';
+import Banner from './Components/Banner';
 
 function App() {
   const starterPlayers = [
@@ -11,9 +12,10 @@ function App() {
       image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1629027.png'
     }
   ]
+
   return (
     <div>
-      <h1>Hawks Depth Chart</h1>
+      <Banner banner/>
       <Player players = {starterPlayers} />
       </div>
   );
