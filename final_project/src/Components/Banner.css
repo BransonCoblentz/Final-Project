@@ -1,0 +1,14 @@
+.banner {
+    background-color: red;
+    display: flex;
+    gap: 70%;
+    margin-bottom: 50px;
+}
+
+.title {
+    padding-left: 5%;
+}
+
+.login {
+    padding-top: -10px;
+}
