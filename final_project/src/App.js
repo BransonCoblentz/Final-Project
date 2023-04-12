@@ -13,7 +13,7 @@ function App() {
   ]
   return (
     <div>
-      <h1 className='title'>Hawks Depth Chart</h1>
+      <h1>Hawks Depth Chart</h1>
       <Player players = {starterPlayers} />
       </div>
   );
