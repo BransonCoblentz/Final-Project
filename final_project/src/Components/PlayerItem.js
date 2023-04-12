@@ -1,4 +1,5 @@
 import Card from './Card';
+import './PlayerItem.css';
 
 function PlayerItem(props) {
     return(

@@ -9,13 +9,13 @@ function Player(props) {
     return (
     <Card className="player">
         {
-            props.players.map(() => (
+            props.players.map((player) => (
                 <PlayerItem
-                    id = {currentPlayers.id}
-                    name = {currentPlayers.name}
-                    position = {currentPlayers.position}
-                    stats = {currentPlayers.stats}
-                    image = {currentPlayers.image}
+                    id = {player.id}
+                    name = {player.name}
+                    position = {player.position}
+                    stats = {player.stats}
+                    image = {player.image}
                     />
             ))}
     </Card>
