@@ -5,20 +5,20 @@ import PlayerItem from './PlayerItem';
 
 
 function Player(props) {
-    const currentPlayers = props;
     return (
-    <Card className="player">
-        {
-            props.players.map((player) => (
-                <PlayerItem
-                    id = {player.id}
-                    name = {player.name}
-                    position = {player.position}
-                    stats = {player.stats}
-                    image = {player.image}
-                    />
-            ))}
-    </Card>
+        <Card className="player">
+            {
+                props.players.map((player) => (
+                    <PlayerItem
+                        id = {player.id}
+                        name = {player.name}
+                        position = {player.position}
+                        stats = {player.stats}
+                        image = {player.image}
+                        edit = {props.isLoggedIn}
+                        />
+                ))}
+        </Card>
     )
         
 }
