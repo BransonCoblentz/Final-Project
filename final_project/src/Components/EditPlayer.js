@@ -2,6 +2,8 @@ import './EditPlayer.css'
 
 function EditPlayer(props) {
     return(
+        <div>
+            <h2>Edit Player</h2>
         <form className='form'>
             <label className='name'>
                 Name:
@@ -20,6 +22,7 @@ function EditPlayer(props) {
                 <input type='text'/>
             </label>
         </form>
+        </div>
         )
 }
 
