@@ -1,0 +1,15 @@
+
+.form {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.add-header {
+    text-align: center;
+}
+
+input {
+    margin-left: 10px;
+}

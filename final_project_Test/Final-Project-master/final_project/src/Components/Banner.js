@@ -3,16 +3,12 @@ import './Banner.css';
 import Login from './Login';
 
 //Top row that includes the Log In button and title/logo
-function Banner(props) {
+function Banner() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [showLoginForm, setShowLoginForm] = useState(false);
 
   const handleLoginClick = () => {
-    if (loggedIn) {
-        setShowLoginForm(false);
-    } else {
-        setShowLoginForm(true);
-    }
+    setShowLoginForm(true);
   }
 
   const handleLoginFormSubmit = (email, password) => {
@@ -22,7 +18,6 @@ function Banner(props) {
     console.log('Password:', password);
     setLoggedIn(true);
     setShowLoginForm(false);
-    props.handleClick();
   }
 
   return (
@@ -36,7 +31,7 @@ function Banner(props) {
           )}
         </React.Fragment>
       ) : (
-        <button className='login' onClick={handleLoginClick}>Log Out</button>
+        <span className='logged-in'>Logged In</span>
       )}
     </div>
   );
@@ -44,30 +39,3 @@ function Banner(props) {
 
 export default Banner;
 
-
-
-
-
-
-
-
-/*import './Banner.css'
-
-//Top row that includes the Log In button and title/logo
-
-
-function Banner(props) {
-    let admin = props.isLoggedIn;
-    let logInText ="";
-    if (!admin) logInText = "Log In";
-    if (admin) logInText = "Log Out";
-   // if (!admin)  {
-    return(
-    <div className='banner'>
-        <h2 className='title'>Hawks Roster</h2>
-        <button onClick={props.handleClick} className='login'>{logInText}</button>
-    </div>
-    );
-}
-
-export default Banner; */
