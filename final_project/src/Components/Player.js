@@ -1,6 +1,5 @@
 import Card from './Card';
 import PlayerItem from './PlayerItem';
-import './Player.css'
 
 // Converts the array in App into Player Items
 
