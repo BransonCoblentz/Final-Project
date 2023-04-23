@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const Item = require('../../models/Item');
 
 router.get('/', (req, res) => {res.send('testing get / item route')});
@@ -8,10 +7,22 @@ router.get('/:id', (req, res) => {res.send('testing get /:id route')});
 //router.post('/', (req, res) => {res.send('testing post / route')});
 router.put('/:id', (req, res) => {res.send('testing put /:id route')});
 
-router.post('/', (req, res) => {
-    Item.create(req.body)
-        .then((item) => res.json({msg: 'Item added successfully'}))
-        .catch((err) => res.status(400).json({error: 'Unable to add this item'}));
+router.post('/', async (req, res) => {
+    try {
+        const {name, position, stats, image} = req.body;
+
+        const newItem = Item({
+            name,
+            position,
+            stats,
+            image
+        });
+        const savedItem = await newItem.save();
+        res.status(201).json(savedItem);
+    } catch(error) {
+        console.error('Failed to add item', error);
+        res.status(500).json({error: 'Failed to add item'});
+    }
 });
 
 router.put('/:id', (req, res) => {
