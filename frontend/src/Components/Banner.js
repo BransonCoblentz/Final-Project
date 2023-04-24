@@ -8,7 +8,7 @@ function Banner(props) {
   const [showLoginForm, setShowLoginForm] = useState(false);
 
   const handleLoginClick = () => {
-    if (loggedIn) {
+    if (props.isLoggedIn) {
         setShowLoginForm(false);
     } else {
         setShowLoginForm(true);
@@ -28,7 +28,7 @@ function Banner(props) {
   return (
     <div className='banner'>
       <h2 className='title'>Hawks Depth Chart</h2>
-      {!loggedIn ? (
+      {!props.isLoggedIn ? (
         <React.Fragment>
           <button className='login' onClick={handleLoginClick}>Log In</button>
           {showLoginForm && (
@@ -36,7 +36,7 @@ function Banner(props) {
           )}
         </React.Fragment>
       ) : (
-        <button className='login' onClick={handleLoginClick}>Log Out</button>
+        <button className='login' onClick={props.handleClick}>Log Out</button>
       )}
     </div>
   );
