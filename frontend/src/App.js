@@ -5,12 +5,62 @@ import AddPlayerButton from './Components/AddPlayerButton';
 import AddPlayer from './Components/AddPlayer';
 import EditPlayer from './Components/EditPlayer'
 import RemovePlayer from './Components/RemovePlayer'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
 
 
 function App() {
-  const starterPlayers = [
+
+ const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+ const handleClick = () => {
+  if (!isLoggedIn) {
+      setIsLoggedIn(true);
+  } else {
+      setIsLoggedIn(false);
+  }
+}
+  const [items, setItems] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/api/items`)
+      .then((res) => {
+        setItems(res.data);
+      })
+      .catch((err) => {
+        console.log('Error from Show Item');
+      })
+  }, []);
+
+
+  return (
+    <div>
+    <Router>
+      <div>
+        <Routes>
+          <Route exact path='/' element={
+            <div>
+            <Banner banner isLoggedIn = {isLoggedIn} handleClick = {handleClick}/>
+            <Player players = {items} isLoggedIn = {isLoggedIn}/>
+            <AddPlayerButton isLoggedIn={isLoggedIn}/> 
+            </div>
+          }/>
+          <Route path='/edit-item/:id' element = {<EditPlayer/>}/>
+          <Route path='/add-item' element={<AddPlayer/>}/>
+          <Route path='/remove-item' element={<RemovePlayer/>}/>
+        </Routes>
+      </div>
+    </Router>
+      </div>
+      
+  );
+        
+}
+
+export default App;
+
+/*const starterPlayers = [
     {
       id: 'p1',
       name: 'Saddiq Bey',
@@ -130,39 +180,4 @@ function App() {
       stats: '25.3 3.9 9.3',
       image: 'https://cdn.nba.com/headshots/nba/latest/1040x760/1629027.png'
     }
-]
-
- const [isLoggedIn, setIsLoggedIn] = useState(false);
-
- const handleClick = () => {
-  if (!isLoggedIn) {
-      setIsLoggedIn(true);
-  } else {
-      setIsLoggedIn(false);
-  }
-}
-
-  return (
-    <div>
-    <Router>
-      <div>
-        <Routes>
-          <Route exact path='/' element={
-            <div>
-            <Banner banner isLoggedIn = {isLoggedIn} handleClick = {handleClick}/>
-            <Player players = {starterPlayers} isLoggedIn = {isLoggedIn}/>
-            <AddPlayerButton isLoggedIn={isLoggedIn}/> 
-            </div>
-          }/>
-          <Route path='/edit-item/:id' element = {<EditPlayer/>}/>
-          <Route path='/add-item' element={<AddPlayer/>}/>
-          <Route path='/remove-item' element={<RemovePlayer/>}/>
-        </Routes>
-      </div>
-    </Router>
-      </div>
-      
-  );
-}
-
-export default App;
+] */
