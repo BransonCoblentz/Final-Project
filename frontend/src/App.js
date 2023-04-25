@@ -24,7 +24,7 @@ function App() {
   const [items, setItems] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/api/items`)
+      .get(`http://localhost:3001/api/items`)
       .then((res) => {
         setItems(res.data);
       })
@@ -48,7 +48,7 @@ function App() {
           }/>
           <Route path='/edit-item/:id' element = {<EditPlayer/>}/>
           <Route path='/add-item' element={<AddPlayer/>}/>
-          <Route path='/remove-item' element={<RemovePlayer/>}/>
+          <Route path='/remove-item/:id' element={<RemovePlayer/>}/>
         </Routes>
       </div>
     </Router>

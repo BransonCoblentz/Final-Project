@@ -10,7 +10,7 @@ function Player(props) {
             {
                 props.players.map((player) => (
                     <PlayerItem
-                        id = {player.id}
+                        _id = {player._id}
                         name = {player.name}
                         position = {player.position}
                         stats = {player.stats}

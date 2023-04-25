@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 
 function EditButton(props) {
-    let route = './edit-item/' + props.id;
+    let route = './edit-item/' + props._id;
     return (
         <div>
             <Link to={route}>
