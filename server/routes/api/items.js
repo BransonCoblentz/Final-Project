@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Item = require('../../models/ProductModel');
+const items= require('../../routes/api/items');
 const productInfo = require('../../models/ProductModel');
 
 
@@ -12,20 +12,21 @@ router.get('/', async(req, res) => {
         console.error('Failed to fetch items:', error);
         res.status(500).json({error: 'Failed to fetch item'});
     }
-})
+});
 
-router.get('/:id', (req, res) => {
-    productInfo.findById(req.params.id) 
+router.get('/:id', async (req, res) => {
+
+    productInfo.findById(req.params.id)
         .then((item) => res.json(item))
-        .catch((err) => res.status(404).json({noitemfound: 'No Item found'}));
-})
+        .catch((err) => res.status(404).json({noitemfound: 'No item found'}));
+});
 
 router.post('/', (req, res) => {
     console.log(req.body);
     productInfo.create(req.body)
         .then((item) => res.json({msg: 'Item added successfully'}))
         .catch((err) => res.status(400).json({error: 'Unable to add this item'}));
-    }); 
+}); 
 
 
 router.put('/:id', (req, res) => {
