@@ -1,11 +1,12 @@
 import {Link} from 'react-router-dom';
+import './ErrorPage.css'
 
 function ErrorPage() {
     return(
         <div>
             <h1>Invalid Route</h1>
             <Link to='/'>
-                <button>Back</button>
+                <button className='button'>Back</button>
             </Link>    
         </div>
     )

@@ -50,7 +50,7 @@ function App() {
           <Route path='/edit-item/:id' element = {<EditPlayer/>}/>
           <Route path='/add-item' element={<AddPlayer/>}/>
           <Route path='/remove-item/:id' element={<RemovePlayer/>}/>
-          <Route path='*' element={ErrorPage} />
+          <Route path='*' element={<ErrorPage/>} />
         </Routes>
       </div>
     </Router>
