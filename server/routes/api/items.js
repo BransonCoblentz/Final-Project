@@ -3,11 +3,6 @@ const router = express.Router();
 const Item = require('../../models/ProductModel');
 const productInfo = require('../../models/ProductModel');
 
-//router.get('/', (req, res) => {res.send('testing get / item route')});
-router.get('/:id', (req, res) => {res.send('testing get /:id route')});
-//router.post('/', (req, res) => {res.send('testing post / route')});
-router.put('/:id', (req, res) => {res.send('testing put /:id route')});
-
 
 router.get('/', async(req, res) => {
     try {
@@ -19,27 +14,18 @@ router.get('/', async(req, res) => {
     }
 })
 
+router.get('/:id', (req, res) => {
+    productInfo.findById(req.params.id) 
+        .then((item) => res.json(item))
+        .catch((err) => res.status(404).json({noitemfound: 'No Item found'}));
+})
+
 router.post('/', (req, res) => {
     console.log(req.body);
     productInfo.create(req.body)
         .then((item) => res.json({msg: 'Item added successfully'}))
         .catch((err) => res.status(400).json({error: 'Unable to add this item'}));
     }); 
-/*    try {
-        const {name, position, stats, image} = req.body;
-
-        const newItem = new Item({
-            name,
-            stats,
-            position,
-            image
-        });
-        const savedItem = await newItem.save();
-        res.status(201).json(savedItem);
-    } catch(error) {
-        console.error('Failed to add item:', error);
-        res.status(500).json({error: 'Failed to add item'});
-    } */
 
 
 router.put('/:id', (req, res) => {
