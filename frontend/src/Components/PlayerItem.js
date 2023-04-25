@@ -23,6 +23,7 @@ function PlayerItem(props) {
         <img src={props.image} alt={props.name} className='player-item-image' />
         <h3 className='player-item-pos'>{props.position}</h3>
         <h3 className='player-item-stats'>{props.stats}</h3>
+        <h3>{props.id}</h3>
       </div>
       <div className='player-item-back'>
         <h2>{isFlipped ? 'Test' : ''}</h2>
@@ -38,6 +39,7 @@ function PlayerItem(props) {
         <img src={props.image} alt={props.name} className='player-item-image' />
         <h3 className='player-item-pos'>{props.position}</h3>
         <h3 className='player-item-stats'>{props.stats}</h3>
+        <h3>{props.id}</h3>
         <EditButton _id={props._id}/>
         <RemoveButton _id={props._id}/>
       </div>
