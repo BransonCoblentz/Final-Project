@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 //app.get('/', (req, res) => res.send('Hello world!'));
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 const mongoose = require('mongoose');
 const cors = require('cors');

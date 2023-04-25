@@ -1,6 +1,7 @@
 import Card from './Card';
 import './PlayerItem.css';
 import EditButton from './EditButton';
+import RemoveButton from './RemoveButton';
 import {Link} from "react-router-dom";
 import React, { useState } from 'react';
 
@@ -37,10 +38,8 @@ function PlayerItem(props) {
         <img src={props.image} alt={props.name} className='player-item-image' />
         <h3 className='player-item-pos'>{props.position}</h3>
         <h3 className='player-item-stats'>{props.stats}</h3>
-        <EditButton id={props.id}/>
-        <Link to="/remove-item">
-             <button className='remove-button'>-Remove Player</button>
-        </Link>
+        <EditButton _id={props._id}/>
+        <RemoveButton _id={props._id}/>
       </div>
       <div className='player-item-back'>
         <h2>{isFlipped ? 'Test' : ''}</h2>
