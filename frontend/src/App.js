@@ -5,6 +5,7 @@ import AddPlayerButton from './Components/AddPlayerButton';
 import AddPlayer from './Components/AddPlayer';
 import EditPlayer from './Components/EditPlayer'
 import RemovePlayer from './Components/RemovePlayer'
+import ErrorPage from './Components/ErrorPage';
 import {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
@@ -49,6 +50,7 @@ function App() {
           <Route path='/edit-item/:id' element = {<EditPlayer/>}/>
           <Route path='/add-item' element={<AddPlayer/>}/>
           <Route path='/remove-item/:id' element={<RemovePlayer/>}/>
+          <Route path='*' element={ErrorPage} />
         </Routes>
       </div>
     </Router>
