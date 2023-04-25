@@ -1,6 +1,10 @@
 import './EditPlayer.css'
+import {Link, useNavigate, useParams} from "react-router-dom";
+import axios from 'axios'
 
 function EditPlayer(props) {
+    const navigate = useNavigate();
+    const {id} = useParams();
     return(
         <div>
             <h2>Edit Player</h2>

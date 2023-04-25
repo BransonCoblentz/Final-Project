@@ -1,10 +1,11 @@
 import './AddPlayer.css';
 import React, {useState} from 'react';
 import axios from 'axios';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {navLink} from 'react-router-dom';
 
 function AddPlayer() {
+    const navigate = useNavigate();
 
     const [name, setName] = useState('');
     const [stats, setStats] = useState('');
@@ -26,20 +27,14 @@ function AddPlayer() {
                 setStats('');
                 setPosition('');
                 setImage('');
-
+                
+                navigate('/');
             })
             .catch((err) =>  {
                 console.log('Failed to add player: ', err);
             });
     };
 
-/*    const handleChange = (e) => {
-        const {name, value} = e.target;
-        setFormData(prevData => ({
-            ...prevData,
-            [name]: value
-        }))
-    } */
     return(
         <div>
         <h2 className='add-header'>Add Player</h2>

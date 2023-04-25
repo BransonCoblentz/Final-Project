@@ -2,18 +2,18 @@ import {Link} from "react-router-dom";
 import axios from 'axios';
 
 function RemoveButton(props) {
-    let route = './edit-item/' + props._id;
+    let route = './remove-item/' + props._id;
 
-    const deleteItem = async() => {
+ /*   const deleteItem = async() => {
         try {
             await axios.delete(`/api/elements/${props.id}`);
         } catch (err) {
             console.log("Failed to remove item");
         }
-    };
+    }; */
     return(
     <Link to={route}>
-             <button className='remove-button' onClick={deleteItem}>-Remove Player</button>
+             <button className='remove-button'>-Remove Player</button>
         </Link>
     );
 }
