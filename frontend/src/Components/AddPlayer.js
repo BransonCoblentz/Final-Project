@@ -2,9 +2,8 @@ import './AddPlayer.css';
 import React, {useState} from 'react';
 import axios from 'axios';
 import {Link, useNavigate} from "react-router-dom";
-import {navLink} from 'react-router-dom';
 
-function AddPlayer() {
+function AddPlayer(props) {
     const navigate = useNavigate();
 
     const [name, setName] = useState('');
@@ -13,6 +12,7 @@ function AddPlayer() {
     const [image, setImage] = useState('');
 
     const handleSubmit = (e) => {
+        if (props.isLoggedIn) {
         e.preventDefault();
             const newElement = {
                 name,
@@ -26,13 +26,22 @@ function AddPlayer() {
                 setName('');
                 setStats('');
                 setPosition('');
-                setImage('');
-                
-                navigate('/');
+                setImage('')
             })
             .catch((err) =>  {
                 console.log('Failed to add player: ', err);
             });
+
+            axios
+            .get(`http://localhost:3001/api/items`)
+            .then((res) => {
+                props.setItems(res.data);
+            })
+             navigate('/');
+        } else {
+            alert('You do not have access to add this player! Please sign in.');
+            navigate('/');
+        }
     };
 
     return(
