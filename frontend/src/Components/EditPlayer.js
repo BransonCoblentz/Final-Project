@@ -3,7 +3,7 @@ import {Link, useNavigate, useParams} from "react-router-dom";
 import {useState, useEffect} from 'react';
 import axios from 'axios'
 
-function EditPlayer() {
+function EditPlayer(props) {
     const navigate = useNavigate();
     const {id} = useParams();
     const [name, setName] = useState('');
@@ -26,6 +26,7 @@ function EditPlayer() {
         }, [id])
 
     const onSubmit = (e) => {
+        if (props.isLoggedIn) {
         e.preventDefault();
 
         const data = {
@@ -37,11 +38,21 @@ function EditPlayer() {
         axios  
             .put(`http://localhost:3001/api/items/${id}`, data)
             .then((res) => {
-                navigate('/');
             })
             .catch((err) => {
                 console.log('Error in EditPlayer', err);
             })
+
+            axios
+                .get(`http://localhost:3001/api/items`)
+                .then((res) => {
+                    props.setItems(res.data);
+                })
+            navigate('/');
+        } else {
+            alert('You do not have access to edit this player! Please sign in.');
+            navigate('/');
+        }
     }
     return(
         <div>
